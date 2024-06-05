@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  # Auth service
+  auth:
+    build: ./Auth  # Path to your Auth service directory
+    ports:
+      - "4000:4000" # Map host port 4000 to container port 4000
+    environment:
+      - MONGO_URI=mongodb+srv://i211123:96rpmV7Iqgm3CDMK@cluster0.ggssube.mongodb.net/ClassroomMS # Set MongoDB connection string (replace with actual connection details)
+
+  # Classrooms service
+  classrooms:
+    build: ./Classrooms  # Path to your Classrooms service directory
+    ports:
+      - "4001:4001"  # Map host port 4001 to container port 4001
+    environment:
+      - MONGO_URI=mongodb+srv://i211123:96rpmV7Iqgm3CDMK@cluster0.ggssube.mongodb.net/ClassroomMS # Set MongoDB connection string (replace with actual connection details)
+
+  # Event bus service
+  eventbus:
+    build: ./event-bus  # Path to your Event Bus service directory
+    ports:
+      - "4009:4009"  # Map host port 4009 to container port 4009
+
+  # Post service
+  post:
+    build: ./Post  # Path to your Post service directory
+    ports:
+      - "4002:4002"  # Map host port 4002 to container port 4002
+    environment:
+      - MONGO_URI=mongodb+srv://i211123:96rpmV7Iqgm3CDMK@cluster0.ggssube.mongodb.net/ClassroomMS # Set MongoDB connection string (replace with actual connection details)
+
+  # Frontend service
+  frontend:
+    build: ./client  # Path to your Frontend service directory
+    ports:
+      - "20200:80"  # Map host port 80 to container port 80
+    volumes:
+      - ./client/build:/app/build  # Mount the build directory from the host to the container
+
+# Define a MongoDB service (replace with your actual MongoDB setup)
+# For a development environment, consider using a separate docker-compose file for MongoDB.
+# volumes:
+#   mongo-data:
+
+# services:
+#   mongodb:
+#     image: mongo:latest
+#     restart: unless-stopped
+#     volumes:
+#       - mongo-data:/data/db
