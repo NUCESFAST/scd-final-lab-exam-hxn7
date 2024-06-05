@@ -29,7 +29,7 @@ pipeline {
         stage('21i1123 Build Docker Image for Client') {
             steps {
                 script {
-                    sh 'docker build -t client-web:1 ./Client'  
+                    sh 'docker build -t client-web:1 ./client'  
                 }
             }
         }
