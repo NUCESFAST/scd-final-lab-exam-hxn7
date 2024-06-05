@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eventbus-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eventbus-backend
+  template:
+    metadata:
+      labels:
+        app: eventbus-backend
+    spec:
+      containers:
+      - name: auth-backend
+        image: hxn7/eventbus-api:1
+        ports:
+        - containerPort: 4009
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eventbus-backend
+spec:
+  selector:
+    app: eventbus-backend
+  ports:
+    - protocol: TCP
+      port: 4009
+      targetPort: 4009
