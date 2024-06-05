@@ -1,6 +1,6 @@
 FROM node:20.13.1-alpine3.19
 
-WORKDIR /app
+WORKDIR /21i1123_eventbus
 
 COPY package*.json ./
 

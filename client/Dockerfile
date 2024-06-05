@@ -2,7 +2,7 @@
 FROM node:20.13.1-alpine3.19 as build
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /21i1123_frontend
 
 # Copy the current directory contents into the container at /usr/src/app
 COPY package*.json ./
@@ -24,7 +24,7 @@ RUN npm run build
 FROM nginx:1.21.5-alpine
 
 # Copy the build output from the previous build stage
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /21i1123_frontend/build /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 80
