@@ -37,7 +37,7 @@ services:
     ports:
       - "20200:80"  # Map host port 80 to container port 80
     volumes:
-      - ./client/build:/app/build  # Mount the build directory from the host to the container
+      - ./client/build:/21i1123_frontend/build  # Mount the build directory from the host to the container
 
 # Define a MongoDB service (replace with your actual MongoDB setup)
 # For a development environment, consider using a separate docker-compose file for MongoDB.

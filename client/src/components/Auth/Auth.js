@@ -64,6 +64,12 @@ const Auth = (props) => {
 
   return (
     <div>
+      <nav className="nav-links">
+        <Link to="/login" className={classes.navLinks}>Login</Link>
+        <Link to="/signup" className={classes.navLinks}>Signup</Link>
+        <Link to="/home" className={classes.navLinks}>Home</Link>
+        <Link to="/posts" className={classes.navLinks}>Posts</Link>
+      </nav>
       <Switch>
         <Route path="/login">
           <form onSubmit={tryLogin} className={classes.authForms}>
