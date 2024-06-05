@@ -11,7 +11,7 @@ pipeline {
         stage('21i1123 Build Docker Image for Auth') {
             steps {
                 script {
-                    sh 'docker build -t auth-api:1 .' 
+                    sh 'docker build -t auth-api:1 ./Auth' 
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
         stage('21i1123 Build Docker Image for Classrooms') {
             steps {
                 script {
-                    sh 'docker build -t classrooms-api:1 .'  
+                    sh 'docker build -t classrooms-api:1 ./Classrooms'  
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
         stage('21i1123 Build Docker Image for Client') {
             steps {
                 script {
-                    sh 'docker build -t client-web:1 .'  
+                    sh 'docker build -t client-web:1 ./Client'  
                 }
             }
         }
@@ -68,7 +68,7 @@ pipeline {
         stage('21i1123 Build Docker Image for EventBus') {
             steps {
                 script {
-                    sh 'docker build -t eventbus-api:1 .'  // Replace placeholders
+                    sh 'docker build -t eventbus-api:1 ./event-bus'  // Replace placeholders
                 }
             }
         }
@@ -87,7 +87,7 @@ pipeline {
         stage('21i1123 Build Docker Image for Post') {
             steps {
                 script {
-                    sh 'docker build -t post-api:1 .'  // Replace placeholders
+                    sh 'docker build -t post-api:1 ./Post'  // Replace placeholders
                 }
             }
         }
